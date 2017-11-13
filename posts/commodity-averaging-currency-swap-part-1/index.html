@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# " lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Commodity Averaging Currency Swap Part 1 | buotlearning</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://buot.learning.io/posts/commodity-averaging-currency-swap-part-1/">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="buot">
+<meta property="og:site_name" content="buotlearning">
+<meta property="og:title" content="Commodity Averaging Currency Swap Part 1">
+<meta property="og:url" content="https://buot.learning.io/posts/commodity-averaging-currency-swap-part-1/">
+<meta property="og:description" content="Commodity Averaging Currency Swap Part 1¶
+Some Lognormal Relationships¶If we let $A$ and $B$ be two lognormally distributed random variables, where we define
+$$
+\begin{align}
+&amp;\rm{E}[A] = \bar{A},  &amp;&amp;">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2017-11-12T23:27:25-05:00">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-inverse navbar-static-top"><div class="container">
+<!-- This keeps the margins nice -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://buot.learning.io/">
+
+                <span id="blog-title">buotlearning</span>
+            </a>
+        </div>
+<!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="bs-navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+<li>
+<a href="../../archive.html">Archive</a>
+                </li>
+<li>
+<a href="../../categories/">Tags</a>
+                </li>
+<li>
+<a href="../../rss.xml">RSS feed</a>
+
+                
+            </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+    <a href="index.ipynb" id="sourcelink">Source</a>
+    </li>
+
+                
+            </ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        <div class="row">
+            
+            
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Commodity Averaging Currency Swap Part 1</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                    buot
+            </span></p>
+            <p class="dateline"><a href="." rel="bookmark"><time class="published dt-published" datetime="2017-11-12T23:27:25-05:00" itemprop="datePublished" title="2017-11-12 23:27">2017-11-12 23:27</time></a></p>
+            
+        <p class="sourceline"><a href="index.ipynb" class="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Commodity-Averaging-Currency-Swap-Part-1">Commodity Averaging Currency Swap Part 1<a class="anchor-link" href="#Commodity-Averaging-Currency-Swap-Part-1">¶</a>
+</h3>
+<hr>
+<h4 id="Some-Lognormal-Relationships">Some Lognormal Relationships<a class="anchor-link" href="#Some-Lognormal-Relationships">¶</a>
+</h4>
+<p>If we let $A$ and $B$ be two lognormally distributed random variables, where we define
+$$
+\begin{align}
+&amp;\rm{E}[A] = \bar{A},  &amp;&amp;\rm{E}[B] = \bar{B}\\
+&amp;\rm{Var}[\rm{log}~A] = \mathit{v}_A, &amp;&amp; \rm{Var}[\rm{log}~B] = \mathit{v}_B\\
+&amp;\rm{Cov}[\rm{log}~A, \rm{log}~B] = \mathit{v}_{AB}
+\end{align}
+$$
+Now let's define a polynomial term
+$$
+C_{p,q} = A^p\cdot B^q
+$$
+for some constants $p, q$. Then because
+$$
+\rm{log}~C_{p,q} = p\cdot \rm{log}~A + q\cdot\rm{log}~B
+$$
+which is a linear combination of two normal distributions, i.e. another normal random  variable, with
+$$
+\rm{Var}[\rm{log}~C_{p,q}] = p^2 \mathit{v}_A + q^2\mathit{v}_B+2pq\mathit{v}_{AB}
+$$
+Meanwhile, we can infer that the expectation
+$$
+\displaystyle
+\begin{align}
+\rm{E}[A] = \bar{A}&amp;=\rm{exp}~\left\{\rm{E}[\rm{log}~A]+\frac{1}{2}\rm{Var}~[\rm{log}~A]\right\}\\
+&amp;=\rm{exp}~\left\{\rm{E}[\rm{log}~A]+\frac{1}{2}\mathit{v}_A\right\}
+\end{align}
+$$
+So we have
+$$
+\rm{E}[\rm{log}~A] = \rm{ln}\bar{A}-\frac{1}{2}\mathit{v}_A, \quad \rm{E}[\rm{log}~B] = \rm{ln}\bar{B}-\frac{1}{2}\mathit{v}_B
+$$
+Therefore
+$$
+\begin{align}
+\mathrm{E}[\mathrm{log}~C_{p,q}] &amp;= p\cdot \mathrm{ln}\bar{A} - \frac{1}{2}p\mathit{v}_A + q\cdot \mathrm{ln}\bar{B} - \frac{1}{2}q\mathit{v}_B\\
+&amp; = \mathrm{ln}\left(\bar{A}^p\bar{B}^q\right) - \frac{1}{2}\left(p\mathit{v}_A+q\mathit{v}_B\right)
+\end{align}
+$$
+and we can derive the expectation of $C_{p,q}$ as
+$$
+\begin{align}
+\mathrm{E}[C_{p,q}] &amp;= \mathrm{exp}\left\{\mathrm{E}[\mathrm{log}~C_{p,q}] + \frac{1}{2}\mathrm{Var}[\mathrm{log}~C_{p,q}]\right\}\\
+&amp; = \mathrm{exp}\left\{\mathrm{ln}\left(\bar{A}^p\bar{B}^q\right) - \frac{1}{2}\left(p\mathit{v}_A+q\mathit{v}_B\right) + \frac{1}{2}p^2 \mathit{v}_A + q^2\mathit{v}_B+2pq\mathit{v}_{AB}\right\}\\
+&amp;=\bar{A}^p\bar{B}^q\mathrm{exp}\left\{\frac{1}{2}p(p-1)\mathit{v}_A + \frac{1}{2}q(q-1)\mathit{v}_B+2pq\mathit{v}_{AB}\right\}
+\end{align}
+$$
+Similarly for its variance, using the definition of variance, it's readily seen that
+$$
+\begin{align}
+\mathrm{Var}[C_{p,q}] &amp;= \mathrm{E}[C_{p,q}^2] - \mathrm{E}^2[C_{p,q}]\\
+&amp;=  \mathrm{exp}\left\{2\mathrm{E}[\mathrm{log}~C_{p,q}] + 2\mathrm{Var}[\mathrm{log}~C_{p,q}]\right\}- \mathrm{exp}\left\{2\mathrm{E}[\mathrm{log}~C_{p,q}] + \mathrm{Var}[\mathrm{log}~C_{p,q}]\right\}\\
+&amp;=\mathrm{E}^2[C_{p,q}]~\left(\mathrm{exp}\left\{\mathrm{Var}[\mathrm{log}~C_{p,q}]\right\}-1\right)\\
+&amp;=\mathrm{E}^2[C_{p,q}]\left(\mathrm{exp}\left\{p^2 \mathit{v}_A + q^2\mathit{v}_B+2pq\mathit{v}_{AB}\right\} - 1\right)
+\end{align}
+$$
+Now some special cases</p>
+<ul>
+<li>
+<p>$C_{p,0} = A^p$
+$$
+\mathrm{E}[A^p]=\bar{A}^p~\mathrm{exp}\left\{\frac{1}{2}p(p-1)\mathit{v}_A\right\}\\
+\mathrm{Var}[\mathrm{log}~A^p] = p^2\mathit{v}_A
+$$</p>
+</li>
+<li>
+<p>$C_{1,1}=AB$
+$$
+\mathrm{E}[AB]=\bar{A}\bar{B}~\mathrm{exp}(\mathit{v}_{AB})\\
+\mathrm{Var}[\mathrm{log}~(AB)] = \mathit{v}_A + \mathit{v}_B + 2\mathit{v}_{AB}
+$$</p>
+</li>
+<li>
+<p>$C_{1,-1}=\frac{A}{B}$
+$$
+\mathrm{E}\left[\frac{A}{B}\right] = \frac{\bar{A}}{\bar{B}}\mathrm{exp}\left\{\mathit{v}_B-\mathit{v}_{AB}\right\}\\
+\mathrm{Var}\left[\mathrm{log}~\frac{A}{B}\right] = \mathit{v}_A+\mathit{v}_B-2\mathit{v}_{AB}
+$$</p>
+</li>
+</ul>
+<p>There is also a general formula for expectation of $Af(B)$ with $f$ some function, such that
+$$
+\mathrm{E}\left[Af(B)\right] = \mathrm{E}[A]\cdot\mathrm{E}[f(B\exp\{\mathit{v}_{AB}\})]
+$$</p>
+<h4 id="Some-Notations-and-Assumptions/Approximations">Some Notations and Assumptions/Approximations<a class="anchor-link" href="#Some-Notations-and-Assumptions/Approximations">¶</a>
+</h4>
+<ol>
+<li>There are two economies, domestic, denoted as $d$, and foreign, denoted as $f$. </li>
+<li>In the domestic economy the risk-neutral measure is $P$; in the foreign market it is denoted as $Q$.</li>
+<li>Spot foreign exchange rate is $X(t)$ in domestic currency for $1$ unit of foreign currency, and is $Y(t)=1/X(t)$ in foreign currency to exchange for $1$ unit of domestic currency.</li>
+<li>At time $t$, we have a commodity asset with maturity at $T&gt;t$, its price in domestic currency is denoted as $F(t, T)$, and its price in foreign currency is defined as $G(t, T)=F(t,T)Y(t)$</li>
+<li>We in general define $n+1$ uncorrelated Wiener process $\mathbf{W}(t) = \{W_i(t)\}$, i.e. $\langle \mathrm{d}W_i(t)~\mathrm{d}W_j(t) \rangle = 0$, for $i\neq j$. Naturally we consider correlated $n+1$ dimensional Wiener process under risk-neutral measure $P$, defined as $\mathbf{Z}(t) = \{Z_i(t) \}$ where $\mathbf{Z}(t) = \mathbf{C}\cdot \mathbf{W}(t)$, with $\mathbf{C}\cdot \mathbf{C}^\top = \mathbf{\rho}=[\rho_{ij}]$ the correlation matrix for $\mathbf{Z}(t)$. Hence we note that $\langle \mathrm{d}Z_i(t)~\mathrm{d}Z_j(t) \rangle = \rho_{ij}\mathrm{d}t$ </li>
+<li>Lastly we denote the instantaneous continuous interest rates in the domestic and foreign economy as $r_d(t), r_f(t)$ respectively.</li>
+</ol>
+<h4 id="Foreign-Exchange-Dynamics">Foreign Exchange Dynamics<a class="anchor-link" href="#Foreign-Exchange-Dynamics">¶</a>
+</h4>
+<p>Under the domestic risk neutral measure $P$, the foreign exchange rate to obtain $1$ unit of foreign currency, $X(t)$, is governed by the SDE
+$$
+\frac{\mathrm{d}X(t)}{X(t)} = (r_d(t) - r_f(t))~\mathrm{d}t + \sigma_X(t)~\mathrm{d}Z_0(t)
+$$
+Note here that the process is <strong>log normal</strong> and the log normal volatility $\sigma_X(t)$ is deterministic.</p>
+<p>The solution to this SDE 
+$$
+X(t) = X(0)~\exp\left\{\int_0^t\,\left(r_d(s)-r_f(s)-\frac{1}{2}\sigma_X^2(s)\right)\mathrm{d}s + \int_0^t\,\sigma_X(s)\mathrm{d}Z_0(s)\right\}
+$$
+is well understood. Indeed, as mentioned above, $X(t)$ is log normally distributed, with expectation 
+$$
+\mathrm{E}_P[X(t)] =X(0)~\exp\left\{\int_0^t\,\left(r_d(s)-r_f(s) \right) \mathrm{d}s \right\}
+$$
+and variance
+$$
+\begin{align}
+&amp;\mathrm{Var}_P[X(t)] =X^2(0)~\exp\left\{2\int_0^t\,\left(r_d(s)-r_f(s) \right) \mathrm{d}s \right\}\left(\exp\left\{\int_0^t\,\sigma_X^2(s)\mathrm{d}s\right\}-1\right)\\
+&amp;\mathrm{Var}_P[\log \,X(t)]  = \int_0^t\,\sigma_X^2(s)\mathrm{d}s
+\end{align}
+$$
+Note that again everything is under domestic risk neutral measure $P$.</p>
+<p>Consider the foreign exchange rate in foreign currency to get $1$ unit of domestic currency, $Y(t)$. With Ito lemma, it's straightforward to see that
+$$
+\begin{align}
+\mathrm{d}Y(t) &amp; = \mathrm{d}\left(\frac{1}{X(t)}\right)\\
+&amp; = -\frac{1}{X^2(t)}\mathrm{d}X(t) + \frac{1}{2}~\frac{2}{X^3(t)}\langle\mathrm{d}X(t)~\mathrm{d}X(t)\rangle\\
+&amp; = Y(t)\left[-\left(r_d(t)-r_f(t)\right)\mathrm{d}t-\sigma_X(t)\mathrm{d}Z_0(t)+\sigma_X^2(t)\mathrm{d}t\right]\\
+&amp; = Y(t)\left[\left(r_f(t)-r_d(t)\right)\mathrm{d}t-\sigma_X(t)~\left(\mathrm{d}Z_0(t)-\sigma_X(t)\right)\right]
+\end{align}
+$$
+If we define
+$$
+\tilde{Z_0}(t)=Z_0(t) - \int_0^t\,\sigma_X(s)\mathrm{d}s
+$$
+then by Girsanov theorem, $\tilde{Z}_0(t)$ is a standard Wiener process under measure $Q$, such that the Radon-Nikodym derivative is 
+$$
+\frac{\mathrm{d}Q(t)}{\mathrm{d}P(t)} = \exp\,\left\{\int_0^t\,\sigma_X(s)\mathrm{d}Z_0(s)-\frac{1}{2}\int_0^t\,\sigma_X^2(s)\mathrm{d}s\right\}
+$$
+Under this foreign risk neutral measure $Q$, the exchange rate $Y(t)$ is given by
+$$
+\frac{\mathrm{d}Y(t)}{Y(t)} = \left(r_f(t)-r_d(t)\right)\mathrm{d}t-\sigma_X(t)\mathrm{d}\tilde{Z}_0(t)
+$$
+The solution to this SDE is similarly given by
+$$
+Y(t) = Y(0)~\exp\left\{\int_0^t\,\left(r_f(s)-r_d(s)-\frac{1}{2}\sigma_X^2(s)\right)\mathrm{d}s - \int_0^t\,\sigma_X(s)\mathrm{d}\tilde{Z}_0(s)\right\}
+$$
+Since $Y(t)$ is a log normal, we observe that 
+$$
+\begin{align}
+&amp;\mathrm{E}_Q[Y(t)]=Y(0)\,\exp\left\{\int_0^t\,\left(r_f(s)-r_d(s)\right)\mathrm{d}s\right\}=\frac{1}{\mathrm{E}_P[X(t)]}\\
+&amp;\mathrm{Var}_Q[Y(t)] =Y^2(0)~\exp\left\{2\int_0^t\,\left(r_f(s)-r_d(s) \right) \mathrm{d}s \right\}\left(\exp\left\{\int_0^t\,\sigma_X^2(s)\mathrm{d}s\right\}-1\right)\\
+&amp;\mathrm{Var}_Q[\log \,Y(t)]  = \int_0^t\,\sigma_X^2(s)\mathrm{d}s = \mathrm{Var}_P[\log \, X(t)]
+\end{align}
+$$
+Note that by Girsanov theorem we are able to change measures
+$$
+\mathrm{E}_Q[M] = \mathrm{E}_P[M\frac{\mathrm{d}Q}{\mathrm{d}P}]
+$$
+where $M$ is any stochastic function.</p>
+<p>By the formula for Radon-Nikodym derivative we see that
+$$
+\frac{\mathrm{d}Q}{\mathrm{d}P}=\frac{X(t)}{\mathrm{E}_P[X(t)]}, \qquad \frac{\mathrm{d}P}{\mathrm{d}Q}=\frac{Y(t)}{\mathrm{E}_Q[Y(t)]}
+$$
+It follows that
+$$
+\mathrm{E}_P[MX(t)] = \mathrm{E}_Q[M]\mathrm{E}_P[X(t)], \qquad \mathrm{E}_Q[MY(t)] = \mathrm{E}_P[M]\mathrm{E}_Q[Y(t)]
+$$</p>
+<h4 id="Commodity-Spot-Dynamics">Commodity Spot Dynamics<a class="anchor-link" href="#Commodity-Spot-Dynamics">¶</a>
+</h4>
+<p>Under the domestic risk neutral measure $P$ we assume that the commodity spot price $F(t, T)$ is governed by a drift-less $n$-factor log normal process:
+$$
+\frac{\mathrm{d}F(t, T)}{F(t, T)} = \sum_{i=1}^n\,\sigma_i(t, T)\mathrm{d}Z_i(t)
+$$
+where all the volatility functions are deterministic.</p>
+<p>Let $A(t, T) = \log \, F(t, T)$. By Ito's lemma,
+$$
+\begin{align}
+\mathrm{d}A(t, T) &amp;= \frac{1}{F(t, T)}\mathrm{d}F(t, T) -\frac{1}{2}\,\frac{1}{F^2(t, T)}\langle\mathrm{d}F(t, T)\,\mathrm{d}F(t, T)\rangle\\
+&amp;=\sum_{i=1}^n\,\sigma_i(t, T)\mathrm{d}Z_i(t)-\frac{1}{2}\sum_{i, j=1}^n\,\langle\sigma_i(t, T)\mathrm{d}Z_i(t, T)\,\sigma_j(t, T)\mathrm{d}Z_j(t, T)\rangle\\
+&amp;=-\frac{1}{2}\sum_{i,j=1}^n\,\sigma_i(t,T)\sigma_j(t,T)\rho_{ij} + \sum_{i=1}^n\,\sigma_i(t, T)\mathrm{d}Z_i(t)
+\end{align}
+$$
+Taking integral and expanding $A(t, T)$ we can see that
+$$
+F(t, T)=F(0, T)\exp\,\left\{-\frac{1}{2}\int_0^t\,\underbrace{\sum_{i,j=1}^n\,\sigma_i(s,T)\sigma_j(s,T)\rho_{ij}}_{\sigma_F^2(s, T)}\mathrm{d}s + \sum_{i=1}^n\,\int_0^t\,\sigma_i(s,T)\mathrm{d}Z_i(s)\right\}
+$$
+where we call $\sigma_F(t, T)$ the instantaneous volatility of $F(t, T)$.</p>
+<p>It's not difficult to obtain the expectation and variance of logarithm:
+$$
+\begin{align}
+&amp; \mathrm{E}_P[F(t, T)] = F(0, T)\\
+&amp; \mathrm{Var}_P[\log F(t, T)] = \int_0^t\,\sum_{i,j=1}^n\,\sigma_i(s,T)\sigma_j(s,T)\rho_{ij}\mathrm{d}s=\int_0^t\,\sigma_F^2(s,T)\mathrm{d}s
+\end{align}
+$$
+We then transfer to the foreign risk neutral measure, by letting
+$$
+\begin{align}
+&amp;\tilde{W_0}(t)=W_0(t)-\int_0^t\,\sigma_X(s)\mathrm{d}s, \quad \tilde{W}_i(t)=W_i(t), \forall i=1,\cdots, n\\
+&amp;\tilde{\mathbf{Z}}(t) = \mathbf{C}\cdot \tilde{\mathbf{W}}(t)
+\end{align}
+$$
+As a result, under the foreign risk measure $Q$, $\tilde{\mathbf{W}}(t)$ is $n+1$-dimensional uncorrelated standard Wiener process, and $\tilde{\mathbf{Z}}(t)$ is correlated Wiener process with $\langle \mathrm{d}\tilde{Z}_i(t)\,\mathrm{d}\tilde{Z}_j(t) \rangle = \rho_{i,j} \mathrm{d}t$.</p>
+<p>Under the domestic risk neutral measure, the process for $F(t,T)$ is driftless, but it is not true under the <strong>foreign risk neutral measure $Q$</strong>. In fact, under $Q$, we find
+$$
+\begin{align}
+\frac{\mathrm{d}F(t, T)}{F(t, T)}&amp;=\sum_{i=1}^n\,\sigma_i(t, T)\mathrm{d}Z_i(t)\\
+&amp;=\sum_{i=1}^n\,\sigma_i(t, T)\left(\sum_{j=0}^n\,C_{ij}\mathrm{d}W_j(t)\right)\\
+&amp;=\sum_{i=1}^n\,\sigma_i(t, T)\left(\sigma_X(t)C_{i0}\mathrm{d}t + \sum_{j=0}^n\,C_{ij}\mathrm{d}\tilde{W}_j(t)\right)\\
+&amp;=\left(\sum_{i=1}^n\,\rho_{i0}\sigma_i(t, T)\sigma_X(t)\right)\mathrm{d}t+\sum_{i=1}^n\,\sigma_i(t, T)\mathrm{d}\tilde{Z}_i(t)
+\end{align}
+$$
+Now under foreign risk neutral pricing measure, we find the expectation and variance of logarithm:
+$$
+\begin{align}
+\mathrm{E}_Q[F(t, T)] &amp;= F(0, T)\exp\left\{\int_0^t\,\left(\sum_{i=1}^n\,\rho_{i0}\sigma_i(s, T)\sigma_X(s)\right)\mathrm{d}s\right\}\\
+&amp;=\mathrm{E}_P[F(t, T)]\exp\left\{-\mathrm{Cov}[\log F(t, T), \log Y(t)]\right\}\\
+\mathrm{Var}_Q[\log F(t, T)]&amp;=\int_0^t\,\sigma_F^2(s, T)\mathrm{d}s\\
+&amp;=\mathrm{Var}_P[\log F(t, T)]
+\end{align}
+$$</p>
+<h4 id="Foreign-Currency-Denominated-Commodity-Spot-Dynamics">Foreign Currency Denominated Commodity Spot Dynamics<a class="anchor-link" href="#Foreign-Currency-Denominated-Commodity-Spot-Dynamics">¶</a>
+</h4>
+<p>Now we consider $G(t, T)=F(t, T)Y(t)$. By Ito's lemma
+$$
+\mathrm{d}G(t, T) = \mathrm{d}F(t, T)\,Y(t)+F(t, T)\mathrm{d}Y(t) + \langle \mathrm{d}F(t, T)\,\mathrm{d}Y(t)\rangle
+$$
+Plugging SDE's for $F(t, T), Y(t)$ under the foreign risk neutral measure $Q$,
+$$
+\begin{align}
+\frac{\mathrm{d}G(t, T)}{G(t, T)} =&amp; \left(\sum_{i=1}^n\,\rho_{i0}\sigma_i(t, T)\sigma_X(t)\right)\mathrm{d}t+\sum_{i=1}^n\,\sigma_i(t, T)\mathrm{d}\tilde{Z}_i(t)+\left(r_f(t)-r_d(t)\right)\mathrm{d}t-\sigma_X(t)\mathrm{d}\tilde{Z}_0(t)\\
+&amp; - \left(\sum_{i=1}^n\,\rho_{i0}\sigma_i(t, T)\sigma_X(t)\right)\mathrm{d}t\\
+=&amp;\left(r_f(t)-r_d(t)\right)\mathrm{d}t-\sigma_X(t)\mathrm{d}\tilde{Z}_0(t) + \sum_{i=1}^n\,\sigma_i(t, T)\mathrm{d}\tilde{Z}_i(t)
+\end{align}
+$$
+Hence, for foreign currency denominated commodity currency swap has solution under foreign risk neutral measure $Q$:
+$$
+\begin{align*}
+G(t, T) =&amp; G(0, T)\exp\left\{\int_0^t\,(r_f(s)-r_d(s))\mathrm{d}s\right\}\\
+&amp;\times\exp\left\{\underbrace{\frac{1}{2}\left(-\sum_{i=1}^n\,\int_0^t\,\rho_{i0}\sigma_X(s)\sigma_i(s, T)\mathrm{d}s + \sum_{i,j=1}^n\,\int_0^t\,\sigma_i(s, T)\sigma_j(s,T)\mathrm{d}s\right)}_{-\frac{1}{2}\sigma_G^2(t, T)}\right\}\\
+&amp;\times\exp\left\{\int_0^t\,\left(-\sigma_X(s)\mathrm{d}\tilde{Z}_0(s)+\sum_{i=1}^n\,\sigma_i(s, T)\mathrm{d}\tilde{Z}_i(s)\right)\right\}
+\end{align*}
+$$
+Again, $G(t, T)$ is log normal under foreign risk neutral measure $Q$, with
+$$
+\begin{align}
+\mathrm{E}_Q[G(t, T)] &amp;= G(0, T)\exp\left\{\int_0^t\,\left(r_f(s)-r_d(s)\right)\mathrm{d}s\right\}\\
+&amp;=F(0, T)Y(0)\exp\left\{\int_0^t\,\left(r_f(s)-r_d(s)\right)\mathrm{d}s\right\}\\
+&amp;=\mathrm{E}_P[F(t, T)]\,\mathrm{E}_Q[Y(t)]\\
+\mathrm{Var}_Q[\log G(t, T)] &amp;= \int_0^t\,\sigma_G^2(s, T)\mathrm{d}s
+\end{align}
+$$</p>
+
+</div>
+</div>
+</div>
+    </div>
+  </div>
+
+    </div>
+    <aside class="postpromonav"><nav></nav></aside><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha256-SDRP1VVYu+tgAGKhddBSl5+ezofHKZeI+OzxakbIe/Y=" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script></article>
+</div>
+        <!--End of body content-->
+
+        <footer id="footer">
+            Contents © 2017         <a href="mailto:robertnsfz86@gmail.com">buot</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+        </footer>
+</div>
+</div>
+
+
+            <script src="../../assets/js/all-nocdn.js"></script><script>$('a.image-reference:not(.islink) img:not(.islink)').parent().colorbox({rel:"gal",maxWidth:"100%",maxHeight:"100%",scalePhotos:true});</script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>
