@@ -15,7 +15,7 @@
  </url>
  <url>
   <loc>https://buot.learning.io/archive.html</loc>
-  <lastmod>2017-11-13T04:55:00Z</lastmod>
+  <lastmod>2017-11-13T07:08:00Z</lastmod>
  </url>
  <url>
   <loc>https://buot.learning.io/categories/</loc>
@@ -32,5 +32,9 @@
  <url>
   <loc>https://buot.learning.io/posts/commodity-averaging-currency-swap-part-1/</loc>
   <lastmod>2017-11-13T04:55:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://buot.learning.io/posts/volatility-modelling-in-finance-part-1/</loc>
+  <lastmod>2017-11-13T07:08:00Z</lastmod>
  </url>
 </urlset>
